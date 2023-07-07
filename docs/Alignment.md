@@ -98,32 +98,56 @@ $SAMTOOLS view -h $OUT_BAMS/COLO829T.sorted.bam | less -S
 ```
 
 ### Preparing bam files for variant calling
+
+#### Marking duplicates
+Marking duplicates in a BAM file refers to the process of identifying and flagging PCR or optical duplicates, which are multiple reads derived from the same original DNA fragment. This information is useful in downstream analysis, such as variant calling, as it allows for more accurate estimation of library complexity and reduces potential biases introduced by PCR amplification or sequencing artefacts. This step is run using [GATK4](https://gatk.broadinstitute.org/hc/en-us)
+
+- For tumour:
 ```
 ## For tumour
-# 3.1 Mark duplicates
 $GATK MarkDuplicates -I $OUT_BAMS/COLO829T.sorted.bam -O $OUT_BAMS/COLO829T.sorted.MD.bam -M $OUT_BAMS/COLO829T.marked_dup_metrics.txt -REMOVE_DUPLICATES true --TMP_DIR $OUT_BAMS
 $SAMTOOLS index $OUT_BAMS/COLO829T.sorted.MD.bam
+```
 
-# 3.2 Add read groups
+- For matched normal:
+```
+## For normal
+$GATK MarkDuplicates -I $OUT_BAMS/COLO829BL.sorted.bam -O $OUT_BAMS/COLO829BL.sorted.MD.bam -M $OUT_BAMS/COLO829BL.marked_dup_metrics.txt -REMOVE_DUPLICATES true --TMP_DIR $OUT_BAMS
+$SAMTOOLS index $OUT_BAMS/COLO829BL.sorted.MD.bam
+```
+
+#### Adding read groups
+This step assigns all the reads in a file to a single new read-group. It is usually required by the [GATK4](https://gatk.broadinstitute.org/hc/en-us) tools that we will use in the downstream analysis. 
+
+- For tumour:
+```
+## For tumour
+# Add read groups
 $GATK AddOrReplaceReadGroups -I $OUT_BAMS/COLO829T.sorted.MD.bam -O $OUT_BAMS/COLO829T.sorted.MD.RG.bam -LB COLO829T -PL illumina -PU COLO829T -SM COLO829T
 $SAMTOOLS index $OUT_BAMS/COLO829T.sorted.MD.RG.bam
+```
 
-# 3.3 Base quality score recalibration
+- For matched-normal:
+```
+## For matched-normal
+$GATK AddOrReplaceReadGroups -I $OUT_BAMS/COLO829BL.sorted.MD.bam -O $OUT_BAMS/COLO829BL.sorted.MD.RG.bam -LB COLO829BL -PL illumina -PU COLO829BL -SM COLO829BL
+$SAMTOOLS index $OUT_BAMS/COLO829BL.sorted.MD.RG.bam
+```
+
+#### Base quality score recalibration (BQSR)
+Base quality score recalibration (BQSR, [GATK4](https://gatk.broadinstitute.org/hc/en-us)) is a process in which we apply machine learning to model potential errors empirically and adjust the quality scores accordingly. It is not mandatory but highly recommended for GATK variant calling pipelines. It requires a set of known variant sites, and in this case, we use the variants found in the [dbSNP](https://en.wikipedia.org/wiki/DbSNP) database.
+
+- For tumour:
+```
+## For tumour
 $GATK BaseRecalibrator -I $OUT_BAMS/COLO829T.sorted.MD.RG.bam  -R $REFGENOME --known-sites $DBSNP -O $OUT_BAMS/COLO829T.recal_data.table
 $GATK ApplyBQSR  -R $REFGENOME -I $OUT_BAMS/COLO829T.sorted.MD.RG.bam --bqsr-recal-file $OUT_BAMS/COLO829T.recal_data.table -O $OUT_BAMS/COLO829T.sorted.MD.RG.BQSR.bam
 $SAMTOOLS index $OUT_BAMS/COLO829T.sorted.MD.RG.BQSR.bam
+```
 
-## For normal
-
-# 3.1 Mark duplicates
-$GATK MarkDuplicates -I $OUT_BAMS/COLO829BL.sorted.bam -O $OUT_BAMS/COLO829BL.sorted.MD.bam -M $OUT_BAMS/COLO829BL.marked_dup_metrics.txt -REMOVE_DUPLICATES true --TMP_DIR $OUT_BAMS
-$SAMTOOLS index $OUT_BAMS/COLO829BL.sorted.MD.bam
-
-# 3.2 Add read groups
-$GATK AddOrReplaceReadGroups -I $OUT_BAMS/COLO829BL.sorted.MD.bam -O $OUT_BAMS/COLO829BL.sorted.MD.RG.bam -LB COLO829BL -PL illumina -PU COLO829BL -SM COLO829BL
-$SAMTOOLS index $OUT_BAMS/COLO829BL.sorted.MD.RG.bam
-
-# 3.3 Base quality score recalibration
+- For matched-normal
+```
+## For matched-normal
 $GATK BaseRecalibrator -I $OUT_BAMS/COLO829BL.sorted.MD.RG.bam  -R $REFGENOME --known-sites $DBSNP -O $OUT_BAMS/COLO829BL.recal_data.table
 $GATK ApplyBQSR  -R $REFGENOME -I $OUT_BAMS/COLO829BL.sorted.MD.RG.bam --bqsr-recal-file $OUT_BAMS/COLO829BL.recal_data.table -O $OUT_BAMS/COLO829BL.sorted.MD.RG.BQSR.bam
 $SAMTOOLS index $OUT_BAMS/COLO829BL.sorted.MD.RG.BQSR.bam
