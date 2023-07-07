@@ -1,8 +1,8 @@
 # Cancer genomics course, EMBL-EBI, 2023
 
-# Alignment workflow
+## Alignment workflow
 
-## Set the environment for running this workflow
+### Set the environment for running this workflow
 
 Let's define some variables before starting to run things.
 
@@ -36,7 +36,7 @@ read1_N=${FOLDER}/fastq_files/COLO829BL.R1.fastq.gz
 read2_N=${FOLDER}/fastq_files/COLO829BL.R2.fastq.gz
 ```
 
-## Initial Quality Control (QC) step
+### Initial Quality Control (QC) step
 The first step of this workflow is to check the quality of the data we will analyse. [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) is a tool that provides a quick assessment of the quality of high-throughput sequencing data, highlighting potential issues such as adapter contamination, sequencing errors, or overrepresented sequences.
 
 ```
@@ -47,7 +47,7 @@ $FASTQC --noextract --nogroup -o $OUT_FASTQC ${FOLDER}/fastq_files/*.fastq.gz
 ```
 - **TODO**: Could you quickly check the quality of your data (open the *html files in the browser)? Compare the generated results to the high- and low-quality examples shown [here](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/).
 
-## Trimming adapters
+### Trimming adapters
 The adapter trimming step is essential in sequencing workflows to remove adapter sequences introduced during library preparation. Adapters are short DNA sequences used to ligate sequencing primers to the target DNA fragments. Still, if left untrimmed, they can lead to false-positive alignments, decreased mapping efficiency, and affect downstream analyses. By accurately trimming adapters, researchers can improve the accuracy of sequence alignment, enhance mapping rates, and reduce the potential for bias or artefacts in downstream analysis pipelines. Here we use [SeqPurge](https://pubmed.ncbi.nlm.nih.gov/27161244/).
 
 We do it first for the tumour reads:
@@ -69,7 +69,7 @@ trimmed2_N=$OUT_TRIM/COLO829BL.R2.trimmed.fastq.gz
 ${SEQPURGE} -in1 $read1_N -in2 $read2_N -out1 $trimmed1_N -out2 $trimmed2_N -qcut 0 -ncut 0 -threads 4
 ```
 
-## Alignment
+### Alignment
 Read alignment is the process of aligning short DNA sequences, called reads, to a reference genome or transcriptome. It involves finding the best match or mapping position on the reference for each read, enabling researchers to determine the origin and location of the reads within the genome and facilitating further analysis such as variant calling or gene expression quantification.
 
 As we already prepared our raw fastq files, we will align all of them against a small fraction of the human reference genome (GRCh38 - hg38). For that, we use the tool [BWA-mem](https://github.com/lh3/bwa).
@@ -98,7 +98,7 @@ $SAMTOOLS index $OUT_BAMS/COLO829BL.sorted.bam
 $SAMTOOLS view -h $OUT_BAMS/COLO829T.sorted.bam | less -S
 ```
 
-## Preparing bam files for variant calling
+### Preparing bam files for variant calling
 ```
 ## For tumour
 # 3.1 Mark duplicates
