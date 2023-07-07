@@ -59,3 +59,21 @@ perl $ANNOVAR/table_annovar.pl ${OUT_FOLDER3}/Strelka2.indels.pass.avinput \
    -remove -protocol refGene,cytoBand,exac03,avsnp147,dbnsfp30a,gnomad_genome -operation g,r,f,f,f,f \
    -nastring . -csvout -polish --otherinfo
 ```
+
+## GATK - MuTect2 calls
+- Path to vcf file with the PASS indels
+```
+VCF3=${FOLDER}/practical_results/variant_calling/mutect2_results/mutect2.filtered.pass.vcf
+```
+- Prepare vcf format to ANNOVAR format
+```
+perl $ANNOVAR/convert2annovar.pl -format vcf4old $VCF3 > ${OUT_FOLDER3}/Mutect2.pass.avinput
+```
+- Annotate variants
+```
+perl $ANNOVAR/table_annovar.pl ${OUT_FOLDER3}/Mutect2.pass.avinput \
+   $hummandb -buildver hg38 \
+   -out ${OUT_FOLDER3}/Mutect2.annovar \
+   -remove -protocol refGene,cytoBand,exac03,avsnp147,dbnsfp30a,gnomad_genome -operation g,r,f,f,f,f \
+   -nastring . -csvout -polish --otherinfo
+```
