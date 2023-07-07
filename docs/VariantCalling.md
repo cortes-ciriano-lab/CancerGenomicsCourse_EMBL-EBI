@@ -119,6 +119,7 @@ PON=${FOLDER}/source_data/1000g_pon.hg38.vcf.gz
 ```
 
 ### Estimating normal/tumour contamination
+The [CalculateContamination](https://gatk.broadinstitute.org/hc/en-us/articles/360036888972-CalculateContamination) step calculates the fraction of reads coming from cross-sample contamination, which will be used afterwards for filtering low-quality variants. It is split into two steps, and it takes as input the tumour and the matched normal bam files.
 
 - Generating GATK pileup tables in known variant sites
 ```
@@ -144,12 +145,14 @@ ${GATK} CalculateContamination \
    -O $OUT_FOLDER2/contamination.table
 ```
 
-### Getting coverage per sample
-```
-#---
-# 2. Get coverage per sample
-#---
+- **QUESTION**: How do the contamination values look like?
 
+In most of the cases, a low level of contamination is observed. Values under 2% are normal values. Between 2-5% the levels are a bit high but do not have a massive  impact on the analysis. More than 5% can be problematic.
+
+### Getting coverage per sample
+[Gatk DepthOfCoverage](https://gatk.broadinstitute.org/hc/en-us/articles/360041851491-DepthOfCoverage-BETA-) takes a set of bam files to determine the depth of coverage at different levels. Having high coverage is really important for detecting somatic variants at low frequency (low VAFs), so ideally, we would like to have a high coverage for at least the tumour sample.
+
+```
 ## Get depth of coverage
 ${GATK} DepthOfCoverage \
    -R ${REFGENOME} \
@@ -159,7 +162,10 @@ ${GATK} DepthOfCoverage \
    -L ${BED} \
    --omit-interval-statistics \
    --omit-depth-output-at-each-base
+```
+- **QUESTION**: Take a look at the output of this computation and discuss with your colleagues the coverage of these samples. Do you consider this coverage high, mid, or low?
 
+```
 #---
 # 3. Run MuTect2
 #---
