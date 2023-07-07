@@ -37,6 +37,7 @@ read2_N=${FOLDER}/fastq_files/COLO829BL.R2.fastq.gz
 ```
 
 ## Initial Quality Control (QC) step
+The first step of this workflow is to check the quality of the data we will analyse. [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) is a tool that provides a quick assessment of the quality of high-throughput sequencing data, highlighting potential issues such as adapter contamination, sequencing errors, or overrepresented sequences.
 
 ```
 OUT_FASTQC=$OUT_FOLDER/fastqc_results
@@ -44,6 +45,8 @@ mkdir -p $OUT_FASTQC
 
 $FASTQC --noextract --nogroup -o $OUT_FASTQC ${FOLDER}/fastq_files/*.fastq.gz
 ```
+**TODO**: Could you quickly check the quality of your data? Compare the generated results to the high- and low-quality examples shown [here](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
+
 ## Trimming adapters
 
 ```
