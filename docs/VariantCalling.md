@@ -3,7 +3,7 @@ Somatic (short) variant calling is the process of identifying genetic variations
 
 In this section, we will explain how to run different variant calling algorithms ([Strelka2](https://www.nature.com/articles/s41592-018-0051-x) and [MuTect2](https://gatk.broadinstitute.org/hc/en-us/articles/360035894731-Somatic-short-variant-discovery-SNVs-Indels-)), as well as how to filter the raw variants to get a high-quality set of somatic mutations. 
 
-This workflow continues with the results obtained from the [alignment exercise](https://gatk.broadinstitute.org/hc/en-us/articles/360035894731-Somatic-short-variant-discovery-SNVs-Indels-), where we generated the COLO829T (tumour) and COLO829BL (matched-normal) bam files. 
+This workflow continues with the results obtained from the [alignment exercise](https://github.com/cortes-ciriano-lab/CancerGenomicsCourse_EMBL-EBI/blob/main/docs/Alignment.md#alignment-workflow---cancer-genomic-course-2023---embl-ebi), where we generated the COLO829T (tumour) and COLO829BL (matched-normal) bam files. 
 
 ## Strelka2 - Somatic workflow
 
