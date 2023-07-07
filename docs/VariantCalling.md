@@ -1,5 +1,9 @@
 # Variant calling
+Somatic (short) variant calling is the process of identifying genetic variations specific to tumour cells by comparing the genomic data from the tumour and matched normal samples. It involves detecting somatic mutations, such as single-nucleotide variants (SNVs) and/or small insertions/deletions (indels), that are acquired during tumorigenesis and distinguishing them from germline variants present in both tumour and normal cells.
 
+In this section, we will explain how to run different variant calling algorithms ([Strelka2](https://www.nature.com/articles/s41592-018-0051-x) and [MuTect2](https://gatk.broadinstitute.org/hc/en-us/articles/360035894731-Somatic-short-variant-discovery-SNVs-Indels-)), as well as how to filter the raw variants to get a high-quality set of somatic mutations. 
+
+This workflow continues with the results obtained from the [alignment exercise](https://gatk.broadinstitute.org/hc/en-us/articles/360035894731-Somatic-short-variant-discovery-SNVs-Indels-), where we generated the COLO829T (tumour) and COLO829BL (matched-normal) bam files. 
 
 ## Strelka2 - Somatic workflow
 
