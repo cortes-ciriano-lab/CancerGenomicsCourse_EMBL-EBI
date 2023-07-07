@@ -5,6 +5,10 @@ In this section, we will learn to annotate somatic variant calls using [ANNOVAR]
 
 This workflow continues with the results obtained from the [variant calling exercise](https://github.com/cortes-ciriano-lab/CancerGenomicsCourse_EMBL-EBI/blob/main/docs/VariantCalling.md#variant-calling), where we detected and filtered somatic variants in the COLO829 sample with two algorithms ([Strelka2](https://www.nature.com/articles/s41592-018-0051-x) and [MuTect2](https://gatk.broadinstitute.org/hc/en-us/articles/360035894731-Somatic-short-variant-discovery-SNVs-Indels-))
 
+**Important**
+
+In today's example, we will use this set of database annotations: *refGene, cytoBand, exac03, avsnp147, dbnsfp30a and gnomad_genome*. However, [ANNOVAR](https://annovar.openbioinformatics.org/en/latest/) is very flexible and can work with many others. Find in this [link](https://annovar.openbioinformatics.org/en/latest/user-guide/download/) how to download them, and [here](https://annovar.openbioinformatics.org/en/latest/user-guide/download/#additional-databases) other additional ones that might be interesting for you.
+
 ### Set the environment for running this workflow
 - Annovar tool and databases to be used
 ```
