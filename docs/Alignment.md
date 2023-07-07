@@ -3,29 +3,40 @@ This section will outline the various stages of the alignment workflow before th
 
 ### Set the environment for running this workflow
 
-Let's define some variables before starting to run things.
+Let's start defining some variables that will be important for the workflow:
 
+- Tools to be used
 ```
-# Tools to be used
 SEQPURGE=SeqPurge
 BWA=bwa
 SAMTOOLS=samtools
 GATK=gatk
 FASTQC=fastqc
+```
 
-# Main folder
+- Main working directory
+```
 FOLDER=/home/training/Documents/DNAseq_short_reads/
+```
 
-# Variant calling (practical)
+- Reference genome used (intersected from Hg38 human reference genome)
+```
 REFGENOME=${FOLDER}/source_data/chr7.fa
+```
 
-# dbSNP vcf with known germline sites
+- DbSNP vcf file with high-frequency germline variants
+```
 DBSNP=${FOLDER}/source_data/Homo_sapiens_assembly38.dbsnp138.vcf.gz
+```
 
-# Define and create out directory
+- Out folder where we will generate and save all our results:
+```
 OUT_FOLDER=${FOLDER}/practical_results/alignment
 mkdir -p $OUT_FOLDER
+```
 
+- Paths to the example fastq files
+```
 # Fastq reads tumour
 read1_T=${FOLDER}/fastq_files/COLO829T.R1.fastq.gz
 read2_T=${FOLDER}/fastq_files/COLO829T.R2.fastq.gz
