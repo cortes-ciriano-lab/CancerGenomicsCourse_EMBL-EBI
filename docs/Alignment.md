@@ -153,3 +153,8 @@ $GATK ApplyBQSR  -R $REFGENOME -I $OUT_BAMS/COLO829BL.sorted.MD.RG.bam --bqsr-re
 $SAMTOOLS index $OUT_BAMS/COLO829BL.sorted.MD.RG.BQSR.bam
 ```
 
+- **TODO**: Look at all the bam files generated in each workflow step. The size is very different, while the number of reads and sequences does not change. Play with samtools to check for differences and run *samtools flagstat* to observe the characteristics of the reads in the bam file:
+```
+$SAMTOOLS flagstat $OUT_BAMS/COLO829T.sorted.MD.RG.BQSR.bam
+$SAMTOOLS flagstat $OUT_BAMS/COLO829BL.sorted.MD.RG.BQSR.bam
+```  
