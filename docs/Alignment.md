@@ -48,7 +48,10 @@ $FASTQC --noextract --nogroup -o $OUT_FASTQC ${FOLDER}/fastq_files/*.fastq.gz
 **TODO**: Could you quickly check the quality of your data? Compare the generated results to the high- and low-quality examples shown [here](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
 
 ## Trimming adapters
+The adapter trimming step is essential in sequencing workflows to remove adapter sequences introduced during library preparation. Adapters are short DNA sequences used to ligate sequencing primers to the target DNA fragments. Still, if left untrimmed, they can lead to false-positive alignments, decreased mapping efficiency, and affect downstream analyses. By accurately trimming adapters, researchers can improve the accuracy of sequence alignment, enhance mapping rates, and reduce the potential for bias or artefacts in downstream analysis pipelines. Here we use [SeqPurge](https://pubmed.ncbi.nlm.nih.gov/27161244/).
 
+
+We do it first for the tumour reads:
 ```
 OUT_TRIM=$OUT_FOLDER/trimmed_reads
 mkdir -p $OUT_TRIM
@@ -57,7 +60,10 @@ mkdir -p $OUT_TRIM
 trimmed1_T=$OUT_TRIM/COLO829T.R1.trimmed.fastq.gz
 trimmed2_T=$OUT_TRIM/COLO829T.R2.trimmed.fastq.gz
 ${SEQPURGE} -in1 $read1_T -in2 $read2_T -out1 $trimmed1_T -out2 $trimmed2_T -qcut 0 -ncut 0 -threads 4
+```
 
+And now for the matched normal reads
+```
 ## For normal
 trimmed1_N=$OUT_TRIM/COLO829BL.R1.trimmed.fastq.gz
 trimmed2_N=$OUT_TRIM/COLO829BL.R2.trimmed.fastq.gz
