@@ -45,11 +45,10 @@ mkdir -p $OUT_FASTQC
 
 $FASTQC --noextract --nogroup -o $OUT_FASTQC ${FOLDER}/fastq_files/*.fastq.gz
 ```
-**TODO**: Could you quickly check the quality of your data? Compare the generated results to the high- and low-quality examples shown [here](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
+- **TODO**: Could you quickly check the quality of your data (open the *html files in the browser)? Compare the generated results to the high- and low-quality examples shown [here](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/).
 
 ## Trimming adapters
 The adapter trimming step is essential in sequencing workflows to remove adapter sequences introduced during library preparation. Adapters are short DNA sequences used to ligate sequencing primers to the target DNA fragments. Still, if left untrimmed, they can lead to false-positive alignments, decreased mapping efficiency, and affect downstream analyses. By accurately trimming adapters, researchers can improve the accuracy of sequence alignment, enhance mapping rates, and reduce the potential for bias or artefacts in downstream analysis pipelines. Here we use [SeqPurge](https://pubmed.ncbi.nlm.nih.gov/27161244/).
-
 
 We do it first for the tumour reads:
 ```
