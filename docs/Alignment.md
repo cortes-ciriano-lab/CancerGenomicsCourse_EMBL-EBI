@@ -71,6 +71,11 @@ ${SEQPURGE} -in1 $read1_N -in2 $read2_N -out1 $trimmed1_N -out2 $trimmed2_N -qcu
 ```
 
 ## Alignment
+Read alignment is the process of aligning short DNA sequences, called reads, to a reference genome or transcriptome. It involves finding the best match or mapping position on the reference for each read, enabling researchers to determine the origin and location of the reads within the genome and facilitating further analysis such as variant calling or gene expression quantification.
+
+As we already prepared our raw fastq files, we will align all of them against a small fraction of the human reference genome (GRCh38 - hg38). For that, we use the tool [BWA-mem](https://github.com/lh3/bwa).
+
+- First, the tumour reads:
 ```
 OUT_BAMS=$OUT_FOLDER/bams
 mkdir -p $OUT_BAMS
@@ -79,11 +84,19 @@ mkdir -p $OUT_BAMS
 $BWA mem -t 4 ${REFGENOME} $trimmed1_T $trimmed2_T | $SAMTOOLS view -Shb - > $OUT_BAMS/COLO829T.bam
 $SAMTOOLS sort -o $OUT_BAMS/COLO829T.sorted.bam $OUT_BAMS/COLO829T.bam
 $SAMTOOLS index $OUT_BAMS/COLO829T.sorted.bam
-
+```
+- And now, the matched normal reads:
+```
 ## For normal
 $BWA mem -t 4 ${REFGENOME} $trimmed1_N $trimmed2_N | $SAMTOOLS view -Shb - > $OUT_BAMS/COLO829BL.bam
 $SAMTOOLS sort -o $OUT_BAMS/COLO829BL.sorted.bam $OUT_BAMS/COLO829BL.bam
 $SAMTOOLS index $OUT_BAMS/COLO829BL.sorted.bam
+```
+
+
+- **TODO**: Take a look at the bam files and get familiar with this [format](https://samtools.github.io/hts-specs/SAMv1.pdf):
+```
+$SAMTOOLS view -h $OUT_BAMS/COLO829T.sorted.bam | less -S
 ```
 
 ## Preparing bam files for variant calling
