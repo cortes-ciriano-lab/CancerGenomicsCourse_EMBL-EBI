@@ -23,7 +23,7 @@ By the end of this session, you will:
 - Have a comprehensive understanding of mutational signatures and the calculations of cancer cell fractions.
 
 ## Author and contact
-- Author: Francesc Muyas Remolar, PhD (EMBL-EBI)
+**Author: Francesc Muyas Remolar, PhD (EMBL-EBI)**
   
 If you have any comments or questions:
 
