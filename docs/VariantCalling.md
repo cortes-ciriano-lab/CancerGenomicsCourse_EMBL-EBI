@@ -39,7 +39,7 @@ REFGENOME=${FOLDER}/source_data/chr7.fa
 # Matched-normal sample
 BAM_N=${FOLDER}/practical_results/alignment/bams/COLO829BL.sorted.MD.RG.BQSR.bam
 # Tumour sample
-BAM_T=${FOLDER}/practical_results/alignment/bams/COLO829T.sorted.MD.RG.bam
+BAM_T=${FOLDER}/practical_results/alignment/bams/COLO829T.sorted.MD.RG.BQSR.bam
 ```
 
 ### Running Strelka2 somatic workflow
@@ -88,7 +88,7 @@ zgrep '#\|PASS' ${VCF_INDEL_STRELKA2} > ${VCF_INDEL_STRELKA2_PASS}
 ## GATK4 - MuTect2
 [MuTect2](https://gatk.broadinstitute.org/hc/en-us/articles/360037593851-Mutect2) call short somatic mutations via local assembly of haplotypes. The caller uses a Bayesian somatic genotyping model and uses the assembly-based machinery of [HaplotypeCaller](https://gatk.broadinstitute.org/hc/en-us/articles/360037225632-HaplotypeCaller) (GATK4 germline variant caller). 
 
-MuTect2 is split into different steps to understand better the background noise in the samples and obtain high-quality somatic mutations. Computationally, this tool is much slowlier than Strelka2, especially with WGS data. However, it is one of the most used tools in the field.
+MuTect2 is split into different steps to understand better the background noise in the samples and obtain high-quality somatic mutations. Computationally, this tool is much slower than Strelka2, especially with WGS data. However, it is one of the most used tools in the field.
 
 ### Set the environment for running this workflow
 
