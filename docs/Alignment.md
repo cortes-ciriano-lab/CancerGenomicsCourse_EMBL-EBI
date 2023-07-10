@@ -11,6 +11,11 @@ The example data utilized is derived from [Valle-Inclan et al 2022](https://www.
 
 Let's start defining some variables that will be important for the workflow:
 
+- Activate conda environment:
+```
+conda activate fmuyas
+```
+
 - Tools to be used
 ```
 SEQPURGE=SeqPurge
