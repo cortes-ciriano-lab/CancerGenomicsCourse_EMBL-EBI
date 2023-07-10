@@ -1,5 +1,11 @@
 ## Alignment workflow - Cancer Genomic Course 2023 - EMBL-EBI
-This section will outline the various stages of the alignment workflow before the variant calling step. This includes quality control (QC) and alignment steps to produce bam files suitable for the variant calling. The example data utilized is derived from [Valle-Inclan et al 2022](https://www.sciencedirect.com/science/article/pii/S2666979X22000726?via%3Dihub) and represents a subset of reads from the WGS data generated for the [COLO829](https://depmap.org/portal/cell_line/COLO829_SKIN?tab=overview) cancer cell line (small regions from chromosome 7). This example has a tumour and matched normal sample, so it is a good example of a standard tumour-matched-normal (paired) somatic variant calling approach.
+This section will outline the various stages of the alignment workflow before the variant calling step. This includes quality control (QC) and alignment steps to produce bam files suitable for the variant calling. 
+
+The example data utilized is derived from [Valle-Inclan et al 2022](https://www.sciencedirect.com/science/article/pii/S2666979X22000726?via%3Dihub) and represents a subset of reads from the WGS data generated for the [COLO829](https://depmap.org/portal/cell_line/COLO829_SKIN?tab=overview) cancer cell line (small regions from chromosome 7). This example has a tumour and matched normal sample, so it is a good example of a standard tumour-matched-normal (paired) somatic variant calling approach.
+
+<div align="center">
+<img src="/docs/VC_workflow.png" width="30%">
+</div>
 
 ### Set the environment for running this workflow
 
