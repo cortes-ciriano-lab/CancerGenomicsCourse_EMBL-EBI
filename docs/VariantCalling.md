@@ -26,7 +26,7 @@ FOLDER=/home/training/Documents/DNAseq_short_reads/
 # Out folder
 OUT_FOLDER1=${FOLDER}/practical_results/variant_calling/strelka2_results
 mkdir -p $OUT_FOLDER1
-rm -r $OUT_FOLDER1/*
+rm -rf $OUT_FOLDER1/*
 ```
 - Human reference genome (intersection from Hg38)
 ```
