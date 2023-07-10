@@ -207,4 +207,9 @@ As we did with the Strelka2 calls, we only want to keep the PASS mutations.
 grep '#\|PASS' ${OUT_FOLDER2}/mutect2.filtered.vcf > ${OUT_FOLDER2}/mutect2.filtered.pass.vcf
 ```
 - **QUESTION**: Compare the number of variants before and after keeping the PASS mutations using `grep`, `zgrep` and `wc -l` commands.  
-- **QUESTION**: How do they compare to Strelka2 calls?  
+- **QUESTION**: How do they compare to Strelka2 calls?
+- **QUESTION**: Let's open [IGV](https://software.broadinstitute.org/software/igv/) to visualize a few mutations. For that, open both the tumour and the matched normal bam file, and copy the mutation coordinates in the IGV genome browser. It should look like:
+
+<div align="center">
+<img src="/docs/IGV_screenshot.png" width="70%">
+</div>
