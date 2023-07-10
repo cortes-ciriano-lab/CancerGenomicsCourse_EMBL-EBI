@@ -5,6 +5,10 @@ In this section, we will explain how to run different variant calling algorithms
 
 This workflow continues with the results obtained from the [alignment exercise](https://github.com/cortes-ciriano-lab/CancerGenomicsCourse_EMBL-EBI/blob/main/docs/Alignment.md#alignment-workflow---cancer-genomic-course-2023---embl-ebi), where we generated the COLO829T (tumour) and COLO829BL (matched-normal) bam files. 
 
+<div align="center">
+<img src="/docs/VC_workflow.png" width="30%">
+</div>
+
 ## Strelka2 - Somatic workflow
 [Strelka2](https://github.com/Illumina/strelka) is a fast and accurate small variant caller optimized to analyse germline variation in small cohorts and somatic variation in tumour/normal sample pairs. The somatic calling model improves on the original Strelka liquid and late-stage tumour analysis method by accounting for possible tumour cell contamination in the normal sample. A final empirical variant re-scoring step using random forest models trained on various call quality features has been added to both callers to improve precision further.
 
