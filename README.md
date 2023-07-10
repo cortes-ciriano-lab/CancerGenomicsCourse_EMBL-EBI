@@ -3,7 +3,7 @@
 The section of this course will be split into two main practical sessions. Both lectures will focus on detecting short variants (single nucleotide variants, as well as small insertions and deletions) in cancer, performing mutational signature analysis and understanding the clonal architecture in tumours. 
 
 ## 1. Alignment and SNV analysis
-In this practical session (find the theory [here]([presentations/](https://github.com/cortes-ciriano-lab/CancerGenomicsCourse_EMBL-EBI/blob/main/presentations/Introduction_to_somatic_variant_calling.CancerGenomicsTranscriptomics2023.Fmuyas.pdf))), you will be guided through the process of detecting single nucleotide variation in cancer. You will gain hands-on experience in analyzing short-read DNA sequencing data, covering the entire workflow from quality control and alignment to variant calling and variant annotation. The main core of this lecture is split into three parts:
+In this practical session (find the theory [here]([presentations/](https://github.com/cortes-ciriano-lab/CancerGenomicsCourse_EMBL-EBI/blob/main/presentations/))), you will be guided through the process of detecting single nucleotide variation in cancer. You will gain hands-on experience in analyzing short-read DNA sequencing data, covering the entire workflow from quality control and alignment to variant calling and variant annotation. The main core of this lecture is split into three parts:
 
 1. [Alignment](https://github.com/cortes-ciriano-lab/CancerGenomicsCourse_EMBL-EBI/blob/main/docs/Alignment.md)
 2. [Somatic variant calling](https://github.com/cortes-ciriano-lab/CancerGenomicsCourse_EMBL-EBI/blob/main/docs/VariantCalling.md)
