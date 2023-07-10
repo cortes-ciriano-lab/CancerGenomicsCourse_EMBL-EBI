@@ -115,6 +115,12 @@ $SAMTOOLS view -h $OUT_BAMS/COLO829T.sorted.bam | less -S
 ```
 - **QUESTION**: Open the BAM file and check some read [flag](https://samtools.github.io/hts-specs/SAMv1.pdf) values. You can use this [link](https://broadinstitute.github.io/picard/explain-flags.html) to understand the meaning of each value.   
 
+<div align="center">
+<img src="/docs/samtools_view_bam.png" width="80%">
+</div>
+
+
+
 ### Preparing bam files for variant calling
 
 #### Marking duplicates
