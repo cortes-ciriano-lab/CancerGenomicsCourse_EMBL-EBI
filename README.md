@@ -14,7 +14,7 @@ By the end of this session, you will be able to:
 - Recall the steps of a tumour-pair SNV pipeline
 
 ## 2. Mutational signatures and clonal population structure analysis in cancer genomes
-During this second practice session, we will focus on the detection and interpretation of mutational signatures in real samples. You will learn how to identify and analyse these signatures. Additionally, we will explore the interpretation of the clonality of somatic mutations to gain insights into the clonal structure of cancer genomes. The main core of this lecture is split into two parts:
+During this second practice session, we will focus on the detection and interpretation of mutational signatures in real samples. You will learn how to identify and analyse these signatures. Additionally, we will explore the interpretation of the clonality of somatic mutations to gain insights into the clonal structure of cancer genomes. Find all the theory [here](https://github.com/cortes-ciriano-lab/CancerGenomicsCourse_EMBL-EBI/blob/main/presentations/Introduction_to_somatic_variant_calling.CancerGenomicsTranscriptomics2023.Fmuyas.pdf). The main core of this lecture is split into two parts:
 
 1. Mutational signature analysis
    - [De novo mutational signature extraction](https://github.com/cortes-ciriano-lab/CancerGenomicsCourse_EMBL-EBI/blob/main/docs/SomaticMutationAnalysis_denovo.html). (Download this file and open it in the browser)
