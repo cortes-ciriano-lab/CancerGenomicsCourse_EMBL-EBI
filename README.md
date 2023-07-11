@@ -19,7 +19,7 @@ During this second practice session, we will focus on the detection and interpre
 1. Mutational signature analysis
    - [De novo mutational signature extraction](https://github.com/cortes-ciriano-lab/CancerGenomicsCourse_EMBL-EBI/blob/main/docs/SomaticMutationAnalysis_denovo.html). (Download this file and open it in the browser)
    - [Refitting with known signatures](https://github.com/cortes-ciriano-lab/CancerGenomicsCourse_EMBL-EBI/blob/main/docs/SomaticMutationAnalysis_refitting.html). (Download this file and open it in the browser)
-3. Understanding cancer cell fraction
+3. [Understanding cancer cell fraction](https://github.com/cortes-ciriano-lab/CancerGenomicsCourse_EMBL-EBI/blob/main/docs/ClonalityAnalysis.html). (Download this file and open it in the browser)
 
 By the end of this session, you will:
 - Have a comprehensive understanding of mutational signatures and the calculations of cancer cell fractions.
