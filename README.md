@@ -17,7 +17,8 @@ By the end of this session, you will be able to:
 During this second practice session, we will focus on the detection and interpretation of mutational signatures in real samples. You will learn how to identify and analyse these signatures. Additionally, we will explore the interpretation of the clonality of somatic mutations to gain insights into the clonal structure of cancer genomes. The main core of this lecture is split into two parts:
 
 1. Mutational signature analysis
-2. Understanding cancer cell fraction
+   - [De novo mutational signature extraction](https://github.com/cortes-ciriano-lab/CancerGenomicsCourse_EMBL-EBI/blob/main/docs/SomaticMutationAnalysis_denovo.html)
+3. Understanding cancer cell fraction
 
 By the end of this session, you will:
 - Have a comprehensive understanding of mutational signatures and the calculations of cancer cell fractions.
