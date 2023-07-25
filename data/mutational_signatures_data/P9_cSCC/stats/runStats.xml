@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!DOCTYPE boost_serialization>
+<boost_serialization signature="serialization::archive" version="12">
+<runStatsData>
+	<lifeTime>
+		<wall>1.10270959669999957e+04</wall>
+		<user>8.67795000000000073e+03</user>
+		<system>7.90599999999999881e+01</system>
+	</lifeTime>
+	<candidateIndels>3321</candidateIndels>
+	<nonCandidateIndels>81997</nonCandidateIndels>
+</runStatsData>
+</boost_serialization>
+
