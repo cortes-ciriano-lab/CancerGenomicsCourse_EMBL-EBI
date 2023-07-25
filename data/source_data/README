@@ -1,0 +1,40 @@
+
+
+#----
+# Small script to download extra source data
+#----
+
+#----
+# Dowload fasta reference genome
+# Only chr7 for our example/tutorial data
+#----
+
+wget https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/chr7.fa.gz 
+gunzip chr7.fa.gz
+bwa index chr7.fa
+samtools faidx chr7.fa
+gatk CreateSequenceDictionary -R chr7.fa 
+
+#-----
+# dbSNP vcf database
+# https://console.cloud.google.com/storage/browser/genomics-public-data/resources/broad/hg38/v0;tab=objects?prefix=&forceOnObjectsSortingFiltering=false
+#-----
+wget https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.dbsnp138.vcf
+bgzip Homo_sapiens_assembly38.dbsnp138.vcf
+tabix Homo_sapiens_assembly38.dbsnp138.vcf.gz
+
+#-----
+# 1000G vcf 
+# High confident SNPs found in 1000G project
+# https://console.cloud.google.com/storage/browser/genomics-public-data/resources/broad/hg38/v0;tab=objects?prefix=&forceOnObjectsSortingFiltering=false
+#-----
+wget https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/1000G_phase1.snps.high_confidence.hg38.vcf.gz
+wget https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/1000G_phase1.snps.high_confidence.hg38.vcf.gz.tbi
+
+#-----
+# PoN 1000G
+# Panel of Normals computed by Mutect2 in 1000G project
+# https://gatk.broadinstitute.org/hc/en-us/community/posts/360061543792-Panel-of-Normals-Documentation
+#-----
+wget https://storage.googleapis.com/gatk-best-practices/somatic-hg38/1000g_pon.hg38.vcf.gz
+wget https://storage.googleapis.com/gatk-best-practices/somatic-hg38/1000g_pon.hg38.vcf.gz.tbi
